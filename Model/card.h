@@ -1,4 +1,17 @@
+//
+// Created by Zippo Xie on 2/18/18.
+//
+
+#ifndef CARD_ANKI_CARD_H
+#define CARD_ANKI_CARD_H
+
 #include <iostream>
+#include <limits>
+#include <unistd.h>
+#include <limits>
+#include <iostream>
+#include <fstream>
+#include <vector>
 using namespace std;
 
 #define LEARN_RELEARN_STEPS 2
@@ -13,7 +26,7 @@ public:
     card(time_t ct, double sst, double tst, short ls, double e, string f, string b, time_t d, double i);
 
 
-        friend ostream &operator<<(ostream &output, const card &A) {
+    friend ostream &operator<<(ostream &output, const card &A) {
         char *verbose = ctime(&A.creadted_time_);
         output << "**************" << endl;
         output << "Front:" << A.front() << endl;
@@ -50,11 +63,5 @@ private:
     double interval_ = -1;
 };
 
-class studyService {
-public:
-    static void study(card &a_card, performance level);
-private:
-    static double next_interval(card &a_card, performance level);
-    static void learn_relearn(card &a_card, performance level);
-    static void review(card &a_card, performance level);
-};
+
+#endif //CARD_ANKI_CARD_H

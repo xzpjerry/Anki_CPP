@@ -1,10 +1,7 @@
-#include "card.hpp"
-#include <unistd.h>
-#include <limits>
-#include <iostream>
-#include <fstream>
-#include <vector>
-
+//
+// Created by Zippo Xie on 2/18/18.
+//
+#include "saveLoad.h"
 void save(const card& obj) {
     ofstream file;
     file.open("save.txt", ios::app);
@@ -38,47 +35,26 @@ void load(vector<card> &cardList) {
 
 
         if (line=="creadted_time")
-        file >> creadted_time;
+            file >> creadted_time;
         if (line=="success_study_times")
-        file >> success_study_times;
+            file >> success_study_times;
         if (line=="total_study_times")
-        file >> total_study_times;
+            file >> total_study_times;
         if (line=="learning_stage")
-        file >> learning_stage;
+            file >> learning_stage;
         if (line=="ease")
-        file >> ease;
+            file >> ease;
         if (line=="front")
-        getline(file, front);
+            getline(file, front);
         if (line=="back")
-        getline(file, back);
+            getline(file, back);
         if (line=="due")
-        file >> due;
+            file >> due;
         if (line=="interval")
-        file >> interval;
+            file >> interval;
         if (line=="end"){
             card c(creadted_time, success_study_times, total_study_times, learning_stage, ease, front, back, due, interval);
             cardList.push_back(c);
         }
     }
-}
-
-int main() {
-
-    vector<card> cardList;
-    card c2(0, 0, 0, 0, .35469, "this is the front", "this is the back", 0, 0);
-
-    save(c2);
-    load(cardList);
-    cout << cardList[0].front() << endl;
-    cout << cardList[0].back() << endl;
-    cout << "ease: " << cardList[0].ease() << endl;
-
-    card test;
-    while(1){
-        studyService::study(test, good);
-        sleep(1);
-    }
-
-    return 0;
-
 }
