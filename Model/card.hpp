@@ -10,6 +10,8 @@ class card {
 public:
     friend class studyService;
     card();
+    card(time_t ct, double sst, double tst, short ls, double e, string f, string b, time_t d, double i);
+
 
         friend ostream &operator<<(ostream &output, const card &A) {
         char *verbose = ctime(&A.creadted_time_);

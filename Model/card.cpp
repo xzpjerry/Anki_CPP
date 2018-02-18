@@ -1,4 +1,5 @@
 #include "card.hpp"
+#include <limits>
 
 card::card() {
     cout << "Front notes:";
@@ -24,6 +25,18 @@ card::card() {
     total_study_times_ = 0;
     success_study_times_ = 0;
     interval_ = -1;
+}
+
+card::card(time_t ct, double sst, double tst, short ls, double e, string f, string b, time_t d, double i){
+    creadted_time_ = ct;
+    success_study_times_ = sst;
+    total_study_times_ = tst;
+    learning_stage_ = ls;
+    ease_ = e;
+    front_ = f;
+    back_ = b;
+    due_ = d;
+    interval_ = i;
 }
 
 
@@ -87,4 +100,3 @@ void studyService::review(card &a_card, performance level) {
     a_card.interval_ = new_interval;
     a_card.due_ = time(0) + new_interval;
 }
-
