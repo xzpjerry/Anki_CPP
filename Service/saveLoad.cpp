@@ -15,6 +15,7 @@ void save(const card& obj) {
     file << ":back:" << obj.back() << endl;
     file << ":due:" << obj.due() << endl;
     file << ":interval:" << obj.interval() << endl;
+    file << ":id:" << obj.id() << endl;
     file << ":end:" << endl;
 }
 
@@ -22,7 +23,7 @@ void load(vector<card> &cardList) {
     time_t creadted_time, due;
     double success_study_times, total_study_times, ease, interval;
     short learning_stage;
-    string front, back;
+    string front, back, id;
 
     ifstream file;
     string line;
@@ -52,6 +53,8 @@ void load(vector<card> &cardList) {
             file >> due;
         if (line=="interval")
             file >> interval;
+        if (line=="id")
+            file >> id;
         if (line=="end"){
             card c(creadted_time, success_study_times, total_study_times, learning_stage, ease, front, back, due, interval);
             cardList.push_back(c);
