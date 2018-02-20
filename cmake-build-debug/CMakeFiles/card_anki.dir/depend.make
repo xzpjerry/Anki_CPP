@@ -3,17 +3,21 @@
 
 CMakeFiles/card_anki.dir/Modal/card.cpp.o: ../Modal/card.cpp
 CMakeFiles/card_anki.dir/Modal/card.cpp.o: ../Modal/card.h
+CMakeFiles/card_anki.dir/Modal/card.cpp.o: ../config.h
 
 CMakeFiles/card_anki.dir/Service/saveLoad.cpp.o: ../Modal/card.h
 CMakeFiles/card_anki.dir/Service/saveLoad.cpp.o: ../Service/saveLoad.cpp
 CMakeFiles/card_anki.dir/Service/saveLoad.cpp.o: ../Service/saveLoad.h
+CMakeFiles/card_anki.dir/Service/saveLoad.cpp.o: ../config.h
 
 CMakeFiles/card_anki.dir/Service/studyService.cpp.o: ../Modal/card.h
 CMakeFiles/card_anki.dir/Service/studyService.cpp.o: ../Service/studyService.cpp
 CMakeFiles/card_anki.dir/Service/studyService.cpp.o: ../Service/studyService.h
+CMakeFiles/card_anki.dir/Service/studyService.cpp.o: ../config.h
 
 CMakeFiles/card_anki.dir/main.cpp.o: ../Modal/card.h
 CMakeFiles/card_anki.dir/main.cpp.o: ../Service/saveLoad.h
 CMakeFiles/card_anki.dir/main.cpp.o: ../Service/studyService.h
+CMakeFiles/card_anki.dir/main.cpp.o: ../config.h
 CMakeFiles/card_anki.dir/main.cpp.o: ../main.cpp
 

@@ -100,6 +100,9 @@
 		<Unit filename="/Users/zippoxie/CLionProjects/card_anki/Service/studyService.h">
 			<Option target="card_anki"/>
 		</Unit>
+		<Unit filename="/Users/zippoxie/CLionProjects/card_anki/config.h">
+			<Option target="card_anki"/>
+		</Unit>
 		<Unit filename="/Users/zippoxie/CLionProjects/card_anki/main.cpp">
 			<Option target="card_anki"/>
 		</Unit>

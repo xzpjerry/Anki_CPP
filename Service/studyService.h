@@ -4,9 +4,9 @@
 
 #ifndef CARD_ANKI_STUDYSERVICE_H
 #define CARD_ANKI_STUDYSERVICE_H
-#include <iostream>
+
+#include "../config.h"
 #include "../Modal/card.h"
-using namespace std;
 
 class studyService {
 public:

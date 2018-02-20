@@ -4,16 +4,20 @@
 CMakeFiles/card_anki.dir/Modal/card.cpp.o
  /Users/zippoxie/CLionProjects/card_anki/Modal/card.cpp
  /Users/zippoxie/CLionProjects/card_anki/Modal/card.h
+ /Users/zippoxie/CLionProjects/card_anki/config.h
 CMakeFiles/card_anki.dir/Service/saveLoad.cpp.o
  /Users/zippoxie/CLionProjects/card_anki/Modal/card.h
  /Users/zippoxie/CLionProjects/card_anki/Service/saveLoad.cpp
  /Users/zippoxie/CLionProjects/card_anki/Service/saveLoad.h
+ /Users/zippoxie/CLionProjects/card_anki/config.h
 CMakeFiles/card_anki.dir/Service/studyService.cpp.o
  /Users/zippoxie/CLionProjects/card_anki/Modal/card.h
  /Users/zippoxie/CLionProjects/card_anki/Service/studyService.cpp
  /Users/zippoxie/CLionProjects/card_anki/Service/studyService.h
+ /Users/zippoxie/CLionProjects/card_anki/config.h
 CMakeFiles/card_anki.dir/main.cpp.o
  /Users/zippoxie/CLionProjects/card_anki/Modal/card.h
  /Users/zippoxie/CLionProjects/card_anki/Service/saveLoad.h
  /Users/zippoxie/CLionProjects/card_anki/Service/studyService.h
+ /Users/zippoxie/CLionProjects/card_anki/config.h
  /Users/zippoxie/CLionProjects/card_anki/main.cpp

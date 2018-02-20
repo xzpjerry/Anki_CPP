@@ -46,6 +46,7 @@ void studyService::learn_relearn(card &a_card, performance level) {
     if(a_card.learning_stage() == (LEARN_RELEARN_STEPS - 1)) { // last stage of learning; will enter review stage next time
         new_interval = (86400 > new_interval) ? 86400 : new_interval; // max(1day, calculted_interval)
         a_card.learning_stage_++;
+        a_card.ease_ = 1000;
     }
     else if(new_interval == -1)  { // reset
         a_card.learning_stage_ = LEARN_RELEARN_STAGE;

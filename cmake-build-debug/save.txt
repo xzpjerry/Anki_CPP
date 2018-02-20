@@ -28,3 +28,73 @@
 :due:0
 :interval:0
 :end:
+:creadted_time:0
+:success_study_times:0
+:total_study_times:0
+:learning_stage:0
+:ease:0.35469
+:front:this is the front
+:back:this is the back
+:due:0
+:interval:0
+:end:
+:creadted_time:0
+:success_study_times:0
+:total_study_times:0
+:learning_stage:0
+:ease:0.35469
+:front:this is the front
+:back:this is the back
+:due:0
+:interval:0
+:end:
+:creadted_time:0
+:success_study_times:0
+:total_study_times:0
+:learning_stage:0
+:ease:0.35469
+:front:this is the front
+:back:this is the back
+:due:0
+:interval:0
+:end:
+:creadted_time:0
+:success_study_times:0
+:total_study_times:0
+:learning_stage:0
+:ease:0.35469
+:front:this is the front
+:back:this is the back
+:due:0
+:interval:0
+:end:
+:creadted_time:0
+:success_study_times:0
+:total_study_times:0
+:learning_stage:0
+:ease:0.35469
+:front:this is the front
+:back:this is the back
+:due:0
+:interval:0
+:end:
+:creadted_time:0
+:success_study_times:0
+:total_study_times:0
+:learning_stage:0
+:ease:0.35469
+:front:this is the front
+:back:this is the back
+:due:0
+:interval:0
+:end:
+:creadted_time:0
+:success_study_times:0
+:total_study_times:0
+:learning_stage:0
+:ease:0.35469
+:front:this is the front
+:back:this is the back
+:due:0
+:interval:0
+:end:

@@ -4,6 +4,8 @@
 
 #ifndef CARD_ANKI_SAVELOAD_H
 #define CARD_ANKI_SAVELOAD_H
+
+#include "../config.h"
 #include "../Modal/card.h"
 void save(const card& obj);
 void load(vector<card> &cardList);
