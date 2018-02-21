@@ -123,6 +123,33 @@ card_anki/fast:
 	$(MAKE) -f CMakeFiles/card_anki.dir/build.make CMakeFiles/card_anki.dir/build
 .PHONY : card_anki/fast
 
+Controller/jobPool.o: Controller/jobPool.cpp.o
+
+.PHONY : Controller/jobPool.o
+
+# target to build an object file
+Controller/jobPool.cpp.o:
+	$(MAKE) -f CMakeFiles/card_anki.dir/build.make CMakeFiles/card_anki.dir/Controller/jobPool.cpp.o
+.PHONY : Controller/jobPool.cpp.o
+
+Controller/jobPool.i: Controller/jobPool.cpp.i
+
+.PHONY : Controller/jobPool.i
+
+# target to preprocess a source file
+Controller/jobPool.cpp.i:
+	$(MAKE) -f CMakeFiles/card_anki.dir/build.make CMakeFiles/card_anki.dir/Controller/jobPool.cpp.i
+.PHONY : Controller/jobPool.cpp.i
+
+Controller/jobPool.s: Controller/jobPool.cpp.s
+
+.PHONY : Controller/jobPool.s
+
+# target to generate assembly for a file
+Controller/jobPool.cpp.s:
+	$(MAKE) -f CMakeFiles/card_anki.dir/build.make CMakeFiles/card_anki.dir/Controller/jobPool.cpp.s
+.PHONY : Controller/jobPool.cpp.s
+
 Modal/card.o: Modal/card.cpp.o
 
 .PHONY : Modal/card.o
@@ -240,6 +267,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... card_anki"
+	@echo "... Controller/jobPool.o"
+	@echo "... Controller/jobPool.i"
+	@echo "... Controller/jobPool.s"
 	@echo "... Modal/card.o"
 	@echo "... Modal/card.i"
 	@echo "... Modal/card.s"

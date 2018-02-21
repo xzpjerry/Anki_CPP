@@ -82,6 +82,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/Users/zippoxie/CLionProjects/card_anki/Controller/jobPool.cpp">
+			<Option target="card_anki"/>
+		</Unit>
+		<Unit filename="/Users/zippoxie/CLionProjects/card_anki/Controller/jobPool.h">
+			<Option target="card_anki"/>
+		</Unit>
 		<Unit filename="/Users/zippoxie/CLionProjects/card_anki/Modal/card.cpp">
 			<Option target="card_anki"/>
 		</Unit>

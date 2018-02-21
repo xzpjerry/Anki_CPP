@@ -53,6 +53,7 @@ void load(vector<card> &cardList) {
         if (line=="interval")
             file >> interval;
         if (line=="end"){
+            cout << "Load one card to cardlist from save.txt" << endl;
             card c(creadted_time, success_study_times, total_study_times, learning_stage, ease, front, back, due, interval);
             cardList.push_back(c);
         }

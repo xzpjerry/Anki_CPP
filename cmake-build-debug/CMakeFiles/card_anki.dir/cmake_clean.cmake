@@ -3,6 +3,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/card_anki.dir/Modal/card.cpp.o"
   "CMakeFiles/card_anki.dir/Service/studyService.cpp.o"
   "CMakeFiles/card_anki.dir/Service/saveLoad.cpp.o"
+  "CMakeFiles/card_anki.dir/Controller/jobPool.cpp.o"
   "card_anki.pdb"
   "card_anki"
 )

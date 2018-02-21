@@ -1,4 +1,4 @@
-:creadted_time:0
+:creadted_time:1519250928
 :success_study_times:0
 :total_study_times:0
 :learning_stage:0
@@ -8,7 +8,7 @@
 :due:0
 :interval:0
 :end:
-:creadted_time:0
+:creadted_time:1519251524
 :success_study_times:0
 :total_study_times:0
 :learning_stage:0
@@ -18,7 +18,7 @@
 :due:0
 :interval:0
 :end:
-:creadted_time:0
+:creadted_time:1519251577
 :success_study_times:0
 :total_study_times:0
 :learning_stage:0
@@ -28,7 +28,7 @@
 :due:0
 :interval:0
 :end:
-:creadted_time:0
+:creadted_time:1519251617
 :success_study_times:0
 :total_study_times:0
 :learning_stage:0
@@ -38,7 +38,7 @@
 :due:0
 :interval:0
 :end:
-:creadted_time:0
+:creadted_time:1519251687
 :success_study_times:0
 :total_study_times:0
 :learning_stage:0
@@ -48,7 +48,7 @@
 :due:0
 :interval:0
 :end:
-:creadted_time:0
+:creadted_time:1519252076
 :success_study_times:0
 :total_study_times:0
 :learning_stage:0
@@ -58,7 +58,7 @@
 :due:0
 :interval:0
 :end:
-:creadted_time:0
+:creadted_time:1519252303
 :success_study_times:0
 :total_study_times:0
 :learning_stage:0
@@ -68,7 +68,7 @@
 :due:0
 :interval:0
 :end:
-:creadted_time:0
+:creadted_time:1519252370
 :success_study_times:0
 :total_study_times:0
 :learning_stage:0
@@ -78,7 +78,7 @@
 :due:0
 :interval:0
 :end:
-:creadted_time:0
+:creadted_time:1519252784
 :success_study_times:0
 :total_study_times:0
 :learning_stage:0
@@ -88,7 +88,167 @@
 :due:0
 :interval:0
 :end:
-:creadted_time:0
+:creadted_time:1519252863
+:success_study_times:0
+:total_study_times:0
+:learning_stage:0
+:ease:0.35469
+:front:this is the front
+:back:this is the back
+:due:0
+:interval:0
+:end:
+:creadted_time:1519254656
+:success_study_times:0
+:total_study_times:0
+:learning_stage:0
+:ease:0.35469
+:front:this is the front
+:back:this is the back
+:due:0
+:interval:0
+:end:
+:creadted_time:1519254706
+:success_study_times:0
+:total_study_times:0
+:learning_stage:0
+:ease:0.35469
+:front:this is the front
+:back:this is the back
+:due:0
+:interval:0
+:end:
+:creadted_time:1519254799
+:success_study_times:0
+:total_study_times:0
+:learning_stage:0
+:ease:0.35469
+:front:this is the front
+:back:this is the back
+:due:0
+:interval:0
+:end:
+:creadted_time:1519255008
+:success_study_times:0
+:total_study_times:0
+:learning_stage:0
+:ease:0.35469
+:front:this is the front
+:back:this is the back
+:due:0
+:interval:0
+:end:
+:creadted_time:1519255222
+:success_study_times:0
+:total_study_times:0
+:learning_stage:0
+:ease:0.35469
+:front:this is the front
+:back:this is the back
+:due:0
+:interval:0
+:end:
+:creadted_time:1519255452
+:success_study_times:0
+:total_study_times:0
+:learning_stage:0
+:ease:0.35469
+:front:this is the front
+:back:this is the back
+:due:0
+:interval:0
+:end:
+:creadted_time:1519255531
+:success_study_times:0
+:total_study_times:0
+:learning_stage:0
+:ease:0.35469
+:front:this is the front
+:back:this is the back
+:due:0
+:interval:0
+:end:
+:creadted_time:1519255636
+:success_study_times:0
+:total_study_times:0
+:learning_stage:0
+:ease:0.35469
+:front:this is the front
+:back:this is the back
+:due:0
+:interval:0
+:end:
+:creadted_time:1519255707
+:success_study_times:0
+:total_study_times:0
+:learning_stage:0
+:ease:0.35469
+:front:this is the front
+:back:this is the back
+:due:0
+:interval:0
+:end:
+:creadted_time:1519255761
+:success_study_times:0
+:total_study_times:0
+:learning_stage:0
+:ease:0.35469
+:front:this is the front
+:back:this is the back
+:due:0
+:interval:0
+:end:
+:creadted_time:1519256078
+:success_study_times:0
+:total_study_times:0
+:learning_stage:0
+:ease:0.35469
+:front:this is the front
+:back:this is the back
+:due:0
+:interval:0
+:end:
+:creadted_time:1519256648
+:success_study_times:0
+:total_study_times:0
+:learning_stage:0
+:ease:0.35469
+:front:this is the front
+:back:this is the back
+:due:0
+:interval:0
+:end:
+:creadted_time:1519256940
+:success_study_times:0
+:total_study_times:0
+:learning_stage:0
+:ease:0.35469
+:front:this is the front
+:back:this is the back
+:due:0
+:interval:0
+:end:
+:creadted_time:1519257185
+:success_study_times:0
+:total_study_times:0
+:learning_stage:0
+:ease:0.35469
+:front:this is the front
+:back:this is the back
+:due:0
+:interval:0
+:end:
+:creadted_time:1519257388
+:success_study_times:0
+:total_study_times:0
+:learning_stage:0
+:ease:0.35469
+:front:this is the front
+:back:this is the back
+:due:0
+:interval:0
+:end:
+:creadted_time:1519257426
 :success_study_times:0
 :total_study_times:0
 :learning_stage:0

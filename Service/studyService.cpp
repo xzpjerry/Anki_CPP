@@ -5,15 +5,15 @@
 #include "studyService.h"
 
 void studyService::study(card &a_card, performance level) {
-    cout << a_card;
+//    cout << a_card;
     if(a_card.learning_stage() < 0 || level == bad) learn_relearn(a_card, level);
     else review(a_card, level);
-    cout << a_card;
+//    cout << a_card;
 }
 
 double studyService::next_interval(card &a_card, performance level) {
     if(a_card.learning_stage() < 0 || level == bad) { // learning or relearn stage
-        if(a_card.learning_stage() < LEARN_RELEARN_STAGE || level == bad) {return -1;} // Need to be reseted
+        if(a_card.learning_stage() < -LEARN_RELEARN_STEPS || level == bad) {return -1;} // Need to be reseted
         return learning_interval[LEARN_RELEARN_STEPS + a_card.learning_stage()];
     } else { // learned stage
         double interval = a_card.interval();
@@ -31,29 +31,30 @@ double studyService::next_interval(card &a_card, performance level) {
     }
 }
 void studyService::learn_relearn(card &a_card, performance level) {
+    cout << "Learning stage @ " << a_card.learning_stage() << endl;
+
+    double new_interval = a_card.interval();
     a_card.total_study_times_++;
     if(level != bad) {
+        if(a_card.learning_stage() == 0) { // last stage of learning; will enter review stage next time
+            a_card.interval_ = (86400 > new_interval) ? 86400 : new_interval; // max(1day, calculted_interval)
+        }
+        else {
+            new_interval = next_interval(a_card, level);
+            if(new_interval == -1)  { // reset
+                a_card.learning_stage_ = -LEARN_RELEARN_STEPS;
+                new_interval = 60;
+            }
+        }
         a_card.success_study_times_++;
         a_card.learning_stage_++;
-        if(level == hard) a_card.ease_ = (100 > (a_card.ease() - 100)) ? 100 : (a_card.ease() - 100);
-        else if(level == easy) a_card.ease_ = (1500 < (a_card.ease() + 200)) ? 1500 : (a_card.ease() + 200);
-    } else{
+    }
+    else {
+        a_card.learning_stage_ = -LEARN_RELEARN_STEPS;
+        new_interval = 60;
         a_card.ease_ = (100 > (a_card.ease() - 200)) ? 100 : (a_card.ease() - 200);
-        a_card.learning_stage_ = LEARN_RELEARN_STAGE;
     }
-
-    double new_interval = next_interval(a_card, level);
-    if(a_card.learning_stage() == (LEARN_RELEARN_STEPS - 1)) { // last stage of learning; will enter review stage next time
-        new_interval = (86400 > new_interval) ? 86400 : new_interval; // max(1day, calculted_interval)
-        a_card.learning_stage_++;
-        a_card.ease_ = 1000;
-    }
-    else if(new_interval == -1)  { // reset
-        a_card.learning_stage_ = LEARN_RELEARN_STAGE;
-        new_interval = next_interval(a_card, level);
-    }
-    a_card.interval_ = new_interval;
-    a_card.due_ = time(0) + new_interval;
+    a_card.due_ = static_cast<time_t>(time(0) + new_interval);
 }
 void studyService::review(card &a_card, performance level) {
     a_card.total_study_times_++;
