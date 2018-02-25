@@ -1,0 +1,4 @@
+Goals:
+	1. Look into how to dump objects into txt files; desigin card class;[Coe]	
+	2. Initial version of core algorithm. [Zhipeng]
+	3. UI skeleton [Patrick]
