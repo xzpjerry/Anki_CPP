@@ -10,9 +10,9 @@
 class jobPool {
 public:
     jobPool(vector<card> &input);
-    vector<card> get_today_card(int new_amount, int old_amount);
-    void get_new_card(int amount, vector<card> &new_list);
-    void get_learned_card_for_review(int amount, vector<card> &old_list);
+//    vector<card> get_today_card(int new_amount, int old_amount);
+//    void get_new_card(int amount, vector<card> &new_list);
+//    void get_learned_card_for_review(int amount, vector<card> &old_list);
     vector<card> quick_sort(vector<card> list);
     friend ostream &operator<<(ostream &output, const jobPool &A) {
         int tmp = 1;

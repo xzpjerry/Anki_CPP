@@ -8,27 +8,27 @@ jobPool::jobPool(vector<card> &input) : counter(0), size(input.size()) {
     input.clear();
     input = card_list;
 }
-vector<card> jobPool::get_today_card(int new_amount, int old_amount) {
-    vector<card> result, new_list, old_list;
-    result.reserve(static_cast<unsigned long>(new_amount + old_amount));
-    get_new_card(new_amount, new_list);
-    get_learned_card_for_review(old_amount, old_list);
-    result.insert(result.end(), new_list.begin(), new_list.end());
-    result.insert(result.end(), old_list.begin(), old_list.end());
-    return result;
-}
-void jobPool::get_new_card(int amount, vector<card> &new_list) {
-    for(auto it = card_list.begin(); it != card_list.end(); ++it) {
-        if((*it).learning_stage() > 0) break;
-        new_list.push_back(*it);
-    }
-}
-void jobPool::get_learned_card_for_review(int amount, vector<card> &old_list) {
-    for(auto it = card_list.begin(); it != card_list.end(); ++it) {
-        if((*it).learning_stage() < 0) continue;
-        old_list.push_back(*it);
-    }
-}
+//vector<card> jobPool::get_today_card(int new_amount, int old_amount) {
+//    vector<card> result, new_list, old_list;
+//    result.reserve(static_cast<unsigned long>(new_amount + old_amount));
+//    get_new_card(new_amount, new_list);
+//    get_learned_card_for_review(old_amount, old_list);
+//    result.insert(result.end(), new_list.begin(), new_list.end());
+//    result.insert(result.end(), old_list.begin(), old_list.end());
+//    return result;
+//}
+//void jobPool::get_new_card(int amount, vector<card> &new_list) {
+//    for(auto it = card_list.begin(); it != card_list.end(); ++it) {
+//        if((*it).learning_stage() > 0) break;
+//        new_list.push_back(*it);
+//    }
+//}
+//void jobPool::get_learned_card_for_review(int amount, vector<card> &old_list) {
+//    for(auto it = card_list.begin(); it != card_list.end(); ++it) {
+//        if((*it).learning_stage() < 0) continue;
+//        old_list.push_back(*it);
+//    }
+//}
 vector<card> jobPool::quick_sort(vector<card> list) {
     if(list.size() < 2) return list;
     vector<card> card_tmp_list_small; // for sorting use

@@ -10,7 +10,7 @@ int main() {
 
     save(c2);
     load(cardList);
-    //cout << cardList[0];
+    cout << cardList[0];
 
     card test;
     while(1){
@@ -19,9 +19,9 @@ int main() {
         cout << "Input performance (0:bad, 1:hard, 2:good, 3:easy):";
         cin >> tmp;
         studyService::study(test, static_cast<performance>(tmp));
-//        cardList.push_back(test);
-//        jobPool sort_test(cardList);
-//        cout << sort_test;
+        cardList.push_back(test);
+        jobPool sort_test(cardList);
+        cout << sort_test;
         sleep(1);
     }
 
