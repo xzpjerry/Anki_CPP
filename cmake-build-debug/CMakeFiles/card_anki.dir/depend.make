@@ -4,6 +4,8 @@
 CMakeFiles/card_anki.dir/Controller/jobPool.cpp.o: ../Controller/jobPool.cpp
 CMakeFiles/card_anki.dir/Controller/jobPool.cpp.o: ../Controller/jobPool.h
 CMakeFiles/card_anki.dir/Controller/jobPool.cpp.o: ../Modal/card.h
+CMakeFiles/card_anki.dir/Controller/jobPool.cpp.o: ../Service/saveLoad.h
+CMakeFiles/card_anki.dir/Controller/jobPool.cpp.o: ../Service/studyService.h
 CMakeFiles/card_anki.dir/Controller/jobPool.cpp.o: ../config.h
 
 CMakeFiles/card_anki.dir/Modal/card.cpp.o: ../Modal/card.cpp

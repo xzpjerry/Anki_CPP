@@ -3,39 +3,71 @@
 //
 #include "jobPool.h"
 
-jobPool::jobPool(vector<card> &input) : counter(0), size(input.size()) {
-    card_list = quick_sort(input);
-    input.clear();
-    input = card_list;
+jobPool::jobPool() {
+    load(card_list);
+    size = static_cast<int>(card_list.size());
+    card_list = quick_sort(card_list);
 }
-//vector<card> jobPool::get_today_card(int new_amount, int old_amount) {
-//    vector<card> result, new_list, old_list;
-//    result.reserve(static_cast<unsigned long>(new_amount + old_amount));
-//    get_new_card(new_amount, new_list);
-//    get_learned_card_for_review(old_amount, old_list);
-//    result.insert(result.end(), new_list.begin(), new_list.end());
-//    result.insert(result.end(), old_list.begin(), old_list.end());
-//    return result;
+
+jobPool::~jobPool() {
+    for(auto it = card_list.begin(); it != card_list.end(); ++it)
+        save(*it);
+
+    // and then save configs
+}
+
+card jobPool::get_current_card() { // get the card with earliest due date
+    if(card_list.size() == 0){
+        auto default_card_str = "DEFAULT_NOT_CARDS_AVAILABLE";
+        string default_info(default_card_str);
+        return card(default_info, default_info);
+    }
+    return card_list.front();
+}
+//card jobPool::look_up_card(string front, string back){
+//
 //}
-//void jobPool::get_new_card(int amount, vector<card> &new_list) {
-//    for(auto it = card_list.begin(); it != card_list.end(); ++it) {
-//        if((*it).learning_stage() > 0) break;
-//        new_list.push_back(*it);
-//    }
-//}
-//void jobPool::get_learned_card_for_review(int amount, vector<card> &old_list) {
-//    for(auto it = card_list.begin(); it != card_list.end(); ++it) {
-//        if((*it).learning_stage() < 0) continue;
-//        old_list.push_back(*it);
-//    }
-//}
+void jobPool::add_new_card(string front, string back){
+    card_list.push_back(card(front, back));
+    size++;
+}
+void jobPool::delete_a_card(card &a_card){
+    vector<card>::iterator card_in_list = find(card_list.begin(), card_list.end(), a_card);
+    if(card_in_list != card_list.end()) {
+        // need saveLoad's API
+    }
+}
+void jobPool::edit_a_card(card &a_card, string front, string back){
+
+}
+
+void jobPool::study(card &a_card, performance level) {
+    vector<card>::iterator card_in_list = find(card_list.begin(), card_list.end(), a_card);
+    if(card_in_list != card_list.end()) {
+        studyService::study(*card_in_list, level);
+
+        time_t end_of_today, now;
+        now = time(0);
+        tm* tm = localtime(&now);
+        tm->tm_hour = 0;
+        tm->tm_min = 0;
+        tm->tm_sec = 0;
+        tm->tm_mday ++;
+        end_of_today = mktime(tm);
+
+        if((*card_in_list).due() > end_of_today) { // the card is not today's assignment then
+            card_list.erase(card_in_list);
+        } else quick_sort(card_list);
+    }
+}
+
 vector<card> jobPool::quick_sort(vector<card> list) {
     if(list.size() < 2) return list;
     vector<card> card_tmp_list_small; // for sorting use
     vector<card> card_tmp_list_big;
     vector<card> card_tmp_list_same;
     card pivot = list.at(0);
-    counter++;
+
     for(auto it = list.begin(); it != list.end(); ++it) {
         if((*it).due() < (pivot.due())) card_tmp_list_small.push_back((*it));
         else if((*it).due() > (pivot.due())) card_tmp_list_big.push_back((*it));
@@ -52,4 +84,13 @@ vector<card> jobPool::quick_sort(vector<card> list) {
     return result;
 }
 
+ostream &operator<<(ostream &output, const jobPool &A) {
+    int tmp = 1;
+    output << "Begin to print out the sorted card list for " << A.size << " cards."<< endl;
+    for(auto it = A.card_list.begin(); it != A.card_list.end(); ++it) {
+        output << "The " << tmp++ << " card:" << endl;
+        output << *it;
+    }
+    return output;
+}
 

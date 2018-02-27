@@ -5,6 +5,8 @@ CMakeFiles/card_anki.dir/Controller/jobPool.cpp.o
  /Users/zippoxie/CLionProjects/card_anki/Controller/jobPool.cpp
  /Users/zippoxie/CLionProjects/card_anki/Controller/jobPool.h
  /Users/zippoxie/CLionProjects/card_anki/Modal/card.h
+ /Users/zippoxie/CLionProjects/card_anki/Service/saveLoad.h
+ /Users/zippoxie/CLionProjects/card_anki/Service/studyService.h
  /Users/zippoxie/CLionProjects/card_anki/config.h
 CMakeFiles/card_anki.dir/Modal/card.cpp.o
  /Users/zippoxie/CLionProjects/card_anki/Modal/card.cpp

@@ -5,18 +5,6 @@
 #ifndef CARD_ANKI_CONFIG_H
 #define CARD_ANKI_CONFIG_H
 
-#include <string>
-#include <sstream>
-#include <iostream>
-
-#include <limits>
-#include <unistd.h>
-#include <limits>
-#include <iostream>
-#include <fstream>
-#include <vector>
-using namespace std;
-
 enum performance {bad, hard, good, easy};
 
 // The following parameters should be read from a config file

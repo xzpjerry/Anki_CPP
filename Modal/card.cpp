@@ -5,23 +5,25 @@
 #include "card.h"
 
 
-card::card() {
-    cout << "Front notes:";
-    while(!(cin >> front_)) {
-        cout << "Bad value" << endl;
-        cin.clear();
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        cout << "Type again" << endl;
-        cout << "Front notes:";
-    }
-    cout << "Back notes:";
-    while(!(cin >> back_)) {
-        cout << "Bad value" << endl;
-        cin.clear();
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        cout << "Type again" << endl;
-        cout << "Back notes:";
-    }
+card::card(string front, string back) {
+//    cout << "Front notes:";
+//    while(!(cin >> front_)) {
+//        cout << "Bad value" << endl;
+//        cin.clear();
+//        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+//        cout << "Type again" << endl;
+//        cout << "Front notes:";
+//    }
+//    cout << "Back notes:";
+//    while(!(cin >> back_)) {
+//        cout << "Bad value" << endl;
+//        cin.clear();
+//        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+//        cout << "Type again" << endl;
+//        cout << "Back notes:";
+//    }
+    back_ = back;
+    front_ = front;
     creadted_time_ = time(0);
     ease_ = 1000;
     learning_stage_ = -LEARN_RELEARN_STEPS;
@@ -33,7 +35,6 @@ card::card() {
     tmp << creadted_time_;
     id_ = front_ + tmp.str();
 }
-
 card::card(time_t ct, double sst, double tst, short ls, double e, string f, string b, time_t d, double i){
     creadted_time_ = ct;
     success_study_times_ = sst;
@@ -47,4 +48,24 @@ card::card(time_t ct, double sst, double tst, short ls, double e, string f, stri
     stringstream tmp;
     tmp << creadted_time_;
     id_ = front_ + tmp.str();
+}
+bool operator== ( const card &n1, const card &n2) {
+    return n1.id_ == n2.id_;
+}
+ostream &operator<<(ostream &output, const card &A) {
+    char *verbose = ctime(&A.creadted_time_);
+    output << "**************" << endl;
+    output << "Id:" << A.id() << endl;
+    output << "Front:" << A.front() << endl;
+    output << "Back:" << A.back() << endl;
+    output << "Seconds since 1970: " << A.creadted_time_ << endl;
+    output << "Creadted on: " << verbose;
+    output << "Ease:" << A.ease() << endl;
+    output << "Stage:" << A.learning_stage() << endl;
+    output << "Total study times:" << A.total_study_times() << endl;
+    output << "Successful study times:" << A.success_study_times() << endl;
+    verbose = ctime(&A.due_);
+    output << "Next due day is on: " << verbose;
+    output << "**************" << endl;
+    return output;
 }

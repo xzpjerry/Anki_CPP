@@ -19,6 +19,8 @@ void save(const card& obj) {
     file << ":end:" << endl;
 }
 
+// void delete(const card& obj)?
+
 void load(vector<card> &cardList) {
     time_t creadted_time, due;
     double success_study_times, total_study_times, ease, interval;

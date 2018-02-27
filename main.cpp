@@ -1,27 +1,26 @@
 #include "Modal/card.h"
-#include "Service/studyService.h"
-#include "Service/saveLoad.h"
 #include "Controller/jobPool.h"
 
 int main() {
 
-    vector<card> cardList;
-    card c2(time(0), 0, 0, 0, .35469, "this is the front", "this is the back", 0, 0);
+    jobPool instance;
+//    string front, back;
+//    cout << "Enter test card front:";
+//    cin >> front;
+//    cout << "Enter test card back:";
+//    cin >> back;
+//    card test(front, back);
+//    cout << test;
 
-    save(c2);
-    load(cardList);
-    cout << cardList[0];
-
-    card test;
     while(1){
-        cout << test;
         int tmp;
+        card current = instance.get_current_card();
+        cout << "Current @ " << current;
         cout << "Input performance (0:bad, 1:hard, 2:good, 3:easy):";
         cin >> tmp;
-        studyService::study(test, static_cast<performance>(tmp));
-        cardList.push_back(test);
-        jobPool sort_test(cardList);
-        cout << sort_test;
+        instance.study(current, static_cast<performance>(tmp));
+
+        cout << instance;
         sleep(1);
     }
 
