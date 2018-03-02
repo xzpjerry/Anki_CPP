@@ -15,7 +15,8 @@ int main(int argc, char *argv[])
     PyRun_SimpleString("import sys");
     PyRun_SimpleString(cstr_cmd);
 
-    PyObject* moduleName = PyString_FromString("py_functions");
+    // import targeted module
+    PyObject* moduleName = PyString_FromString("db_trial");
 	PyObject* pModule = PyImport_Import(moduleName);
 	if (!pModule) // if fails
     {
@@ -24,17 +25,17 @@ int main(int argc, char *argv[])
     }
     cout << "[INFO] Python get module succeed." << endl;
 
-    PyObject* pv = PyObject_GetAttrString(pModule, "multiply");
+    PyObject* pv = PyObject_GetAttrString(pModule, "test");
     if (!pv || !PyCallable_Check(pv))  // if the function is not exisited
     {
-        cout << "[ERROR] Can't find funftion (multiply)" << endl;
+        cout << "[ERROR] Can't find funftion (test)" << endl;
         return 0;
     }
-    cout << "[INFO] Get function (multiply) succeed." << endl;
+    cout << "[INFO] Get function (test) succeed." << endl;
 
     PyObject* args = PyTuple_New(2);   // build a python tuple with size 2
-    PyObject* arg1 = PyInt_FromLong(4);    // 1st argument is 4
-    PyObject* arg2 = PyInt_FromLong(3);    // 2nd arugment is 3
+    PyObject* arg1 = Py_BuildValue("s", "hello");    // 1st argument is "hello"
+    PyObject* arg2 = Py_BuildValue("s", "world");    // 2nd arugment is "world"
     PyTuple_SetItem(args, 0, arg1); // set the tuple[0] as 4
     PyTuple_SetItem(args, 1, arg2); // set the tuple[1] as 3
 
