@@ -13,8 +13,8 @@ void studyService::study(card &a_card, performance level) {
 
 double studyService::next_interval(card &a_card, performance level) {
     if(a_card.learning_stage() < 0 || level == bad) { // learning or relearn stage
-        if(a_card.learning_stage() < -LEARN_RELEARN_STEPS || level == bad) {return -1;} // Need to be reseted
-        return learning_interval[LEARN_RELEARN_STEPS + a_card.learning_stage()];
+        if(a_card.learning_stage() < -config.get_LEARN_RELEARN_STEPS() || level == bad) {return -1;} // Need to be reseted
+        return config.get_learning_intervals()[config.get_LEARN_RELEARN_STEPS() + a_card.learning_stage()];
     } else { // learned stage
         double interval = a_card.interval();
         double ease = a_card.ease();
@@ -42,7 +42,7 @@ void studyService::learn_relearn(card &a_card, performance level) {
         else {
             new_interval = next_interval(a_card, level);
             if(new_interval == -1)  { // reset
-                a_card.learning_stage_ = -LEARN_RELEARN_STEPS;
+                a_card.learning_stage_ = -config.get_LEARN_RELEARN_STEPS();
                 new_interval = 60;
             }
         }
@@ -50,7 +50,7 @@ void studyService::learn_relearn(card &a_card, performance level) {
         a_card.learning_stage_++;
     }
     else {
-        a_card.learning_stage_ = -LEARN_RELEARN_STEPS;
+        a_card.learning_stage_ = -config.get_LEARN_RELEARN_STEPS();
         new_interval = 60;
         a_card.ease_ = (100 > (a_card.ease() - 200)) ? 100 : (a_card.ease() - 200);
     }

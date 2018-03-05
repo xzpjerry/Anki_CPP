@@ -10,7 +10,7 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
-#include "../config.h"
+#include "config.h"
 #include "../Modal/card.h"
 void save(const card& obj);
 void load(vector<card> &cardList);

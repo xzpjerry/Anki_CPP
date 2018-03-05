@@ -5,7 +5,7 @@
 #ifndef CARD_ANKI_STUDYSERVICE_H
 #define CARD_ANKI_STUDYSERVICE_H
 
-#include "../config.h"
+#include "config.h"
 #include "../Modal/card.h"
 
 class studyService {

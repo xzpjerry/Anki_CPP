@@ -26,7 +26,7 @@ card::card(string front, string back) {
     front_ = front;
     creadted_time_ = time(0);
     ease_ = 1000;
-    learning_stage_ = -LEARN_RELEARN_STEPS;
+    learning_stage_ = -config.get_LEARN_RELEARN_STEPS();
     //learning_stage_ = 0;
     total_study_times_ = 0;
     success_study_times_ = 0;

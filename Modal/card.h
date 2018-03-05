@@ -9,7 +9,7 @@
 #include <sstream>
 #include <iostream>
 using namespace std;
-#include "../config.h"
+#include "../Service/config.h"
 
 class card {
 public:

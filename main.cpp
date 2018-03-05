@@ -1,8 +1,10 @@
 #include "Modal/card.h"
 #include "Controller/jobPool.h"
+#include "Service/config.h"
 
 int main() {
-
+    Config config;
+    
     jobPool instance;
 //    string front, back;
 //    cout << "Enter test card front:";
