@@ -4,10 +4,10 @@ from pymongo import IndexModel, ASCENDING, DESCENDING
 import sys
 import logging
 
-class DB_config:
+class DB_config(object):
 
     def __init__(self, user, userpw, dbhost, dbport, dbname):
-        self.url = "mongodb://%s:%s@%s:%s/%s" % (
+        self.url = u"mongodb://%s:%s@%s:%s/%s" % (
             user, userpw, dbhost, dbport, dbname)
         self.user = user
         self.userpw = userpw
@@ -15,120 +15,123 @@ class DB_config:
         self.dbport = dbport
         self.dbname = dbname
 
-
-class record:
-
-    def __init__(self, date, front, back): # Inputed date will always be in unix timestamp format
-        self.date = date
-        self.front = front
-        self.back = back
-
-    def formatted(self):
-        temp = {
-                "date": self.date,
-                "front": self.front,
-                "back": self.back
-                }
-        return temp
-
     def __str__(self):
-        return str(self.formatted())
+        return self.url
 
 
-class DB:
+# class record(object):
 
-    def __init__(self, config : DB_config):
-        try:
-            self.db = getattr(MongoClient(config.url), config.dbname)
-            self.collection = None
-            logging.info("Collection is not yet set for now.")
-        except:
-            logging.warning(
-                "Can not connect to the Database, please check your config.")
-            sys.exit(1)
+#     def __init__(self, date, front, back): # Inputed date will always be in unix timestamp format
+#         self.date = date
+#         self.front = front
+#         self.back = back
 
-    def set_collection(self, collection):
-        try:
-            self.collection = getattr(self.db, collection)
-            index = IndexModel([("date", DESCENDING)])
-            self.collection.create_indexes([index])
-        except:
-            logging.warning(
-                "Can not connect to the collection or the collection is not existed? Do you have permission to write?.")
-            raise
-        finally:
-            logging.info("Now the collection is set.")
-            for index in self.collection.list_indexes():
-                logging.info("Using index: " + str(index))
+#     def formatted(self):
+#         temp = {
+#                 u"date": self.date,
+#                 u"front": self.front,
+#                 u"back": self.back
+#                 }
+#         return temp
 
-    def del_collection(self):
-        if self.collection != None:
-            try:
-                self.collection.drop()
-            except Exception as e:
-                logging.warning("Deletion failed.")
-                raise
-            finally:
-                logging.info("DB deleted.")
+#     def __str__(self):
+#         return unicode(self.formatted())
 
-    def delete_memos(self, date, front, back):
-        if self.collection != None:
-            try:
-                self.collection.delete_many(record(date, front, back).formatted())
-            except:
-                logging.warning(
-                    "Can not connect to the collection, is the collection exist? Do you have permission to write?.")
-                raise
-            finally:
-                logging.info("All related records deleted.")
-        else:
-            logging.warning("Collection is not yet set.")
-            logging.warning("Nothing to delete.")
 
-    def insert(self, date, front, back):
-        if self.collection != None:
-            try:
-                logging.info("Inserting ")
-                self.collection.insert(record(date, front, back).formatted())
-            except:
-                logging.warning(
-                    "Can not connect to the collection, is the collection exist? Do you have permission to write?.")
-                logging.warning("Insertion failed.")
-                raise
-            finally:
-                logging.info("Record inserted.")
-        else:
-            logging.warning("Collection is not yet set.")
-            logging.warning("Insertion failed.")
+# class DB(object):
 
-    def get(self, record, title):
-        try:
-            print(record)
-            result = self.collection.find_one(record)
-            del result['_id']
-            return result
-        except:
-            logging.warning(
-                "Can not connect to the collection, is the collection exist? Do you have permission to write?.")
-            logging.warning("Fetch failed.")
-            raise
-        finally:
-            logging.info("Found and returned!")
+#     def __init__(self, config):
+#         try:
+#             self.db = getattr(MongoClient(config.url), config.dbname)
+#             self.collection = None
+#             logging.info(u"Collection is not yet set for now.")
+#         except:
+#             logging.warning(
+#                 u"Can not connect to the Database, please check your config.")
+#             sys.exit(1)
 
-    def get_all(self):
-        if self.collection != None:
-            try:
-                records = []
-                for onerecord in self.collection.find().sort([("date", DESCENDING)]):
-                    del onerecord['_id']
-                    records.append(onerecord)
-            except:
-                logging.warning(
-                    "Can not connect to the collection, is the collection exist? Do you have permission to write?.")
-                logging.warning("Fetch failed.")
-                raise
-            finally:
-                return records
-        else:
-            logging.warning("Collection is not yet set.")
-            logging.warning("Finding failed.")
+#     def set_collection(self, collection):
+#         try:
+#             self.collection = getattr(self.db, collection)
+#             index = IndexModel([(u"date", DESCENDING)])
+#             self.collection.create_indexes([index])
+#         except:
+#             logging.warning(
+#                 u"Can not connect to the collection or the collection is not existed? Do you have permission to write?.")
+#             raise
+#         finally:
+#             logging.info(u"Now the collection is set.")
+#             for index in self.collection.list_indexes():
+#                 logging.info(u"Using index: " + unicode(index))
+
+#     def del_collection(self):
+#         if self.collection != None:
+#             try:
+#                 self.collection.drop()
+#             except Exception, e:
+#                 logging.warning(u"Deletion failed.")
+#                 raise
+#             finally:
+#                 logging.info(u"DB deleted.")
+
+#     def delete_memos(self, date, front, back):
+#         if self.collection != None:
+#             try:
+#                 self.collection.delete_many(record(date, front, back).formatted())
+#             except:
+#                 logging.warning(
+#                     u"Can not connect to the collection, is the collection exist? Do you have permission to write?.")
+#                 raise
+#             finally:
+#                 logging.info(u"All related records deleted.")
+#         else:
+#             logging.warning(u"Collection is not yet set.")
+#             logging.warning(u"Nothing to delete.")
+
+#     def insert(self, date, front, back):
+#         if self.collection != None:
+#             try:
+#                 logging.info(u"Inserting ")
+#                 self.collection.insert(record(date, front, back).formatted())
+#             except:
+#                 logging.warning(
+#                     u"Can not connect to the collection, is the collection exist? Do you have permission to write?.")
+#                 logging.warning(u"Insertion failed.")
+#                 raise
+#             finally:
+#                 logging.info(u"Record inserted.")
+#         else:
+#             logging.warning(u"Collection is not yet set.")
+#             logging.warning(u"Insertion failed.")
+
+#     def get(self, record, title):
+#         try:
+#             print record
+#             result = self.collection.find_one(record)
+#             del result[u'_id']
+#             return result
+#         except:
+#             logging.warning(
+#                 u"Can not connect to the collection, is the collection exist? Do you have permission to write?.")
+#             logging.warning(u"Fetch failed.")
+#             raise
+#         finally:
+#             logging.info(u"Found and returned!")
+
+#     def get_all(self):
+#         if self.collection != None:
+#             try:
+#                 records = []
+#                 for onerecord in self.collection.find().sort([(u"date", DESCENDING)]):
+#                     del onerecord[u'_id']
+#                     records.append(onerecord)
+#             except:
+#                 logging.warning(
+#                     u"Can not connect to the collection, is the collection exist? Do you have permission to write?.")
+#                 logging.warning(u"Fetch failed.")
+#                 raise
+#             finally:
+#                 return records
+#         else:
+#             logging.warning(u"Collection is not yet set.")
+#             logging.warning(u"Finding failed.")

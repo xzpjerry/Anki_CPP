@@ -5,13 +5,19 @@ all: dependency main.exe
 
 dependency:
 	+$(MAKE) -C Modal/
+	+$(MAKE) -C Service/
 	+$(MAKE) -C Controller/
 	
 main.o: main.cpp
 	g++ -c -std=c++11 -g $^ $(MongoDB_IFLAG)
 
-main.exe: Modal/card.o Controller/jobPool.o main.o
+main.exe: Modal/card.o Service/studyService.o Controller/jobPool.o main.o
 	g++ -std=c++11 -g -o $@ $^ -Wall $(MongoDB_LFLAG)
 
+SUBDIR_ROOTS := Modal Service Controller
+DIRS := . $(shell find $(SUBDIR_ROOTS) -type d)
+GARBAGE_PATTERNS := *.o *.exe
+GARBAGE := $(foreach DIR,$(DIRS),$(addprefix $(DIR)/,$(GARBAGE_PATTERNS)))
+
 clean:
-	rm -rf $(wildcard *.exe) $(wildcard *.o)
+	rm -rf  $(GARBAGE)

@@ -10,13 +10,14 @@ int main(int argc, char *argv[])
     string path = "./";
     string chdir_cmd = string("sys.path.append(\"") + path + "\")";
     const char* cstr_cmd = chdir_cmd.c_str();
+    cout << cstr_cmd << endl;
 
     PyRun_SimpleString("print 'hello'");
     PyRun_SimpleString("import sys");
     PyRun_SimpleString(cstr_cmd);
 
     // import targeted module
-    PyObject* moduleName = PyString_FromString("db_trial");
+    PyObject* moduleName = PyString_FromString("dbtrial");
 	PyObject* pModule = PyImport_Import(moduleName);
 	if (!pModule) // if fails
     {
@@ -43,7 +44,7 @@ int main(int argc, char *argv[])
 
     if (pRet)  // check result
     {
-        long result = PyInt_AsLong(pRet);
+        string result = PyString_AsString(pRet);
         cout << "result:" << result << endl;
     }
     

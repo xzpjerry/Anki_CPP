@@ -5,6 +5,7 @@
 #ifndef CARD_ANKI_MAIN_H
 #define CARD_ANKI_MAIN_H
 #include <iostream>
+#include <vector>
 #include <mongocxx/instance.hpp>
 mongocxx::instance instance{};// don't put inside main 
 
