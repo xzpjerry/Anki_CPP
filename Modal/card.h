@@ -10,10 +10,7 @@
 #include <sstream>
 #include <iostream>
 using namespace std;
-<<<<<<< HEAD
-#include "../Service/config.h"
-=======
->>>>>>> Dev_mongodb_based
+
 
 class card {
 public:
