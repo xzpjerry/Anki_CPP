@@ -10,5 +10,6 @@
 mongocxx::instance instance{};// don't put inside main 
 
 #include "Modal/card.h"
+#include "Service/config.h"
 #include "Controller/jobPool.h"
 #endif //CARD_ANKI_MAIN_H

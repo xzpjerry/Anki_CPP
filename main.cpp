@@ -2,13 +2,16 @@
 #include "main.h"
 
 int main() {
-
-    
-
-    // test jobPool
-    cout << "Testing jobPool, cin username, then password";
+    // testing loading userinfo from local file
     string username, password;
-    cin >> username >> password;
+    if(!Config::get_user_info(username, password)) {
+        cout << "Not saved username/password found, cin username, then password";
+        cin >> username >> password;
+        Config::set_user_info(username, password);
+        Config::get_user_info(username, password);
+    }
+    
+    // test jobPool
     jobPool test2(username, password);
     cout << "Logined!" << endl;
     cout << test2;
