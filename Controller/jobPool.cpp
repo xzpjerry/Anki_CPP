@@ -189,8 +189,8 @@ void jobPool::add_new_card(string front, string back){
                 << "type" << "card" 
                 << "front" << front
                 << "back" << back
-                << "created@" << bsoncxx::types::b_int64{now} //////////////////
-                << "due@" << (long long int)946684800
+                << "created@" << bsoncxx::types::b_int64{now}
+                << "due@" << bsoncxx::types::b_int64{946684800}
                 << "ease" << 1000.0
                 << "learning_stage" << 0
                 << "total_study_times" << 0
@@ -229,8 +229,8 @@ bool jobPool::modify_a_card(card &a_card) {
                 << "type" << "card" 
                 << "front" << a_card.front()
                 << "back" << a_card.back()
-                << "created@" << (long long)a_card.created_time()
-                << "due@" << (long long)a_card.due()
+                << "created@" << bsoncxx::types::b_int64{a_card.created_time()}
+                << "due@" << bsoncxx::types::b_int64{a_card.due()}
                 << "ease" << a_card.ease()
                 << "learning_stage" << a_card.learning_stage()
                 << "total_study_times" << a_card.total_study_times()
