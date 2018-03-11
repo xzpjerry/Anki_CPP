@@ -42,7 +42,7 @@ void jobPool::update_config() {
     if(!config) {
         // default configs
         time_t now = time(0);
-        long long now_long = static_cast<long long>(now);
+        long long int now_long = static_cast<long long int>(now);
         auto config = bsoncxx::builder::stream::document{} 
                 << "type" << "config"
                 << "last_studied@" << now_long
@@ -119,7 +119,7 @@ void jobPool::update_card_list() {
     tm->tm_sec = 0;
     tm->tm_mday ++;
     end_of_today = mktime(tm);
-    long long end_of_today_long = static_cast<long long>(end_of_today);
+    long long int end_of_today_long = static_cast<long long int>(end_of_today);
     
     auto collection = db[id];
 
@@ -190,8 +190,8 @@ void jobPool::add_new_card(string front, string back){
                 << "type" << "card" 
                 << "front" << front
                 << "back" << back
-                << "created@" << static_cast<long long>(now)
-                << "due@" << (long long)946684800
+                << "created@" << static_cast<long long int>(now)
+                << "due@" << (long long int)946684800
                 << "ease" << 1000.0
                 << "learning_stage" << 0
                 << "total_study_times" << 0
