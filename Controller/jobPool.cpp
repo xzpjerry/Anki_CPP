@@ -42,10 +42,9 @@ void jobPool::update_config() {
     if(!config) {
         // default configs
         time_t now = time(0);
-        long long int now_long = static_cast<long long int>(now);
         auto config = bsoncxx::builder::stream::document{} 
                 << "type" << "config"
-                << "last_studied@" << now_long
+                << "last_studied@" << (long long int)(now) //////////////////
                 << "last_new" << 0
                 << "last_review" << 0
                 << "max_new" << 20
@@ -119,7 +118,6 @@ void jobPool::update_card_list() {
     tm->tm_sec = 0;
     tm->tm_mday ++;
     end_of_today = mktime(tm);
-    long long int end_of_today_long = static_cast<long long int>(end_of_today);
     
     auto collection = db[id];
 
@@ -157,7 +155,7 @@ void jobPool::update_card_list() {
                 << "learning_stage" << open_document
                     << "$gt" << 0 << close_document
                 << "due@" << open_document
-                    << "$lte" << end_of_today_long << close_document
+                    << "$lte" << (long long int)(end_of_today) << close_document //////////////////
                 << bsoncxx::builder::stream::finalize, opts_old);
         reload_cards_from_cursor(cursor_old, review_card_list);
 
@@ -190,7 +188,7 @@ void jobPool::add_new_card(string front, string back){
                 << "type" << "card" 
                 << "front" << front
                 << "back" << back
-                << "created@" << static_cast<long long int>(now)
+                << "created@" << (long long int)(now) //////////////////
                 << "due@" << (long long int)946684800
                 << "ease" << 1000.0
                 << "learning_stage" << 0
