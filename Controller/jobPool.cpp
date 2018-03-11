@@ -42,7 +42,7 @@ void jobPool::update_config() {
     if(!config) {
         // default configs
         time_t now = time(0);
-        long long now_long = (long)(long)now;
+        long long now_long = (long long)now;
         auto config = bsoncxx::builder::stream::document{} 
                 << "type" << "config"
                 << "last_studied@" << now_long
@@ -119,7 +119,7 @@ void jobPool::update_card_list() {
     tm->tm_sec = 0;
     tm->tm_mday ++;
     end_of_today = mktime(tm);
-    long long end_of_today_long = (long)(long)end_of_today;
+    long long end_of_today_long = (long long)end_of_today;
     
     auto collection = db[id];
 
