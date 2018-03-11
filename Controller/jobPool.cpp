@@ -42,7 +42,7 @@ void jobPool::update_config() {
     if(!config) {
         // default configs
         time_t now = time(0);
-        long long now_long = (long long)now;
+        long long now_long = static_cast<long long>(now);
         auto config = bsoncxx::builder::stream::document{} 
                 << "type" << "config"
                 << "last_studied@" << now_long
@@ -119,7 +119,7 @@ void jobPool::update_card_list() {
     tm->tm_sec = 0;
     tm->tm_mday ++;
     end_of_today = mktime(tm);
-    long long end_of_today_long = (long long)end_of_today;
+    long long end_of_today_long = static_cast<long long>(end_of_today);
     
     auto collection = db[id];
 
@@ -152,7 +152,7 @@ void jobPool::update_card_list() {
         auto opts_old = mongocxx::options::find{};
         opts_old.limit(max_review - last_review);
         opts_old.sort(order_old.view()); // (learning_steps.size() + 1)
-        auto cursor_old = collection.find(bsoncxx::builder::stream::document{} 
+        auto cursor_old = collection.find(bsoncxx ::builder::stream::document{} 
                 << "type" << "card"
                 << "learning_stage" << open_document
                     << "$gt" << 0 << close_document
@@ -190,7 +190,7 @@ void jobPool::add_new_card(string front, string back){
                 << "type" << "card" 
                 << "front" << front
                 << "back" << back
-                << "created@" << (long long)now
+                << "created@" << static_cast<long long>(now)
                 << "due@" << (long long)946684800
                 << "ease" << 1000.0
                 << "learning_stage" << 0
