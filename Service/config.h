@@ -1,8 +1,8 @@
 #ifndef CONFIG_H
 #define CONFIG_H
 
-#include <iostream>
 #include <functional>
+#include <iostream>
 #include <fstream>
 #include <ostream>
 #include <string>

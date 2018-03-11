@@ -3,3 +3,4 @@ studyService.o: studyService.cpp
 
 config.o: config.cpp
 	g++ -c -std=c++11 -g $^
+
