@@ -9,10 +9,10 @@ dependency:
 	+$(MAKE) -C Controller/
 	
 main.o: main.cpp
-	g++ -c -std=c++11 -g $^ $(MongoDB_IFLAG)
+	g++ -c -std=c++11 -g $^ $(pkg-config --cflags --libs libmongocxx) $(MongoDB_IFLAG)
 
 main.exe: Modal/card.o Service/studyService.o Service/config.o Controller/jobPool.o main.o
-	g++ -std=c++11 -g -o $@ $^ -Wall $(MongoDB_LFLAG)
+	g++ -std=c++11 -g -o $@ $^ -Wall $(pkg-config --cflags --libs libmongocxx) -Wl,-rpath,/usr/local/lib $(MongoDB_LFLAG)
 
 SUBDIR_ROOTS := Modal Service Controller
 DIRS := . $(shell find $(SUBDIR_ROOTS) -type d)
