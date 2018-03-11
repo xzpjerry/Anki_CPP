@@ -2,6 +2,7 @@
 #define CONFIG_H
 
 #include <iostream>
+#include <functional>
 #include <fstream>
 #include <ostream>
 #include <string>
