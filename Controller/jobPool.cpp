@@ -42,9 +42,10 @@ void jobPool::update_config() {
     if(!config) {
         // default configs
         time_t now = time(0);
+
         auto config = bsoncxx::builder::stream::document{} 
                 << "type" << "config"
-                << "last_studied@" << (long long int)(now) //////////////////
+                << "last_studied@" << bsoncxx::types::b_int64{now} //////////////////
                 << "last_new" << 0
                 << "last_review" << 0
                 << "max_new" << 20
@@ -155,7 +156,7 @@ void jobPool::update_card_list() {
                 << "learning_stage" << open_document
                     << "$gt" << 0 << close_document
                 << "due@" << open_document
-                    << "$lte" << (long long int)(end_of_today) << close_document //////////////////
+                    << "$lte" << bsoncxx::types::b_int64{end_of_today} << close_document //////////////////
                 << bsoncxx::builder::stream::finalize, opts_old);
         reload_cards_from_cursor(cursor_old, review_card_list);
 
@@ -188,7 +189,7 @@ void jobPool::add_new_card(string front, string back){
                 << "type" << "card" 
                 << "front" << front
                 << "back" << back
-                << "created@" << (long long int)(now) //////////////////
+                << "created@" << bsoncxx::types::b_int64{now} //////////////////
                 << "due@" << (long long int)946684800
                 << "ease" << 1000.0
                 << "learning_stage" << 0
