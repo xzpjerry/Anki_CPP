@@ -10,7 +10,7 @@ bool Config::set_user_info(string username, string passwd) {
     file.open("config.txt");
     if(!file.is_open())
         return false;
-    hash <string> hash;
+    std::hash <string> hash;
     unsigned long hashedUserName = hash(username);
     unsigned long hashedPasswd = hash(passwd);
 
