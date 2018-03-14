@@ -29,6 +29,37 @@ ostream &operator<<(ostream &output, const jobPool &A) {
     return output;
 }
 
+bool jobPool::is_logined() {
+    string dummy_str;
+    return Config::get_user_info(dummy_str, dummy_str);
+}
+
+vector<string> jobPool::get_credential() {
+    vector<string> result;
+    string hashed_username, hashed_password;
+    Config::get_user_info(hashed_username, hashed_password);
+    result.push_back(hashed_username); //0
+    result.push_back(hashed_password); //1
+    return result;
+}
+
+bool jobPool::set_user_credentials_to(string username, string password) {
+    Config::set_user_info(username, password);
+    return true;
+    // just incase we need  to check validation of the username and password
+}
+
+void jobPool::change_to_another_user(string username, string password) {
+    if(set_user_credentials_to(username, password)) {
+        id = get_credential().at(0) + get_credential().at(1);
+        new_card_list.clear();
+        review_card_list.clear();
+        learning_steps.clear();
+        update_card_list();
+        update_config();
+    }
+}
+
 jobPool::jobPool(string username, string password) {
     id = username + password;
     update_card_list();
@@ -103,7 +134,7 @@ void jobPool::update_config() {
             for(const bsoncxx::array::element& one_int : learning_steps_array_ele.get_array().value) {
                 if(one_int.type() == type::k_int32) {
                     learning_steps.push_back(one_int.get_int32().value);
-                } else {cout << "Illegal config format!" << endl;}
+                } //else {cout << "Illegal config format!" << endl;}
             }
         }
     }
@@ -126,14 +157,11 @@ void jobPool::update_card_list() {
       collection.find_one(document{} << "init" << "record" << finalize);
     if(!not_first_time) {
         // insert a record
-        cout << "First time using, welcome!\n";
+        // cout << "First time using, welcome!\n";
         auto hello_world = bsoncxx::builder::stream::document{} << "init" << "record" << bsoncxx::builder::stream::finalize;
         collection.insert_one(hello_world.view());
     } else {
-        cout << "Welcome back\n";
-        
-        auto collection = db[id];
-
+        // cout << "Welcome back\n";
         auto order_new = bsoncxx::builder::stream::document{} 
             << "created@" << 1 << bsoncxx::builder::stream::finalize;
         auto opts_new = mongocxx::options::find{};

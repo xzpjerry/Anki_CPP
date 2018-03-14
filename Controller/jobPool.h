@@ -30,6 +30,7 @@ enum config_class {max_new_setting, max_review_setting, learning_steps_setting};
 
 #include "../Modal/card.h"
 #include "../Service/studyService.h"
+#include "../Service/config.h"
 using namespace std;
 
 
@@ -38,6 +39,16 @@ public:
     jobPool(string username, string password);
     
     // for view's usage:
+    // first ask whether it is logined
+    // if so get credentials
+    // else let the user input username and password 
+    // and pass it through the set_user_credentials_to() function
+    // then use the get_credential() func
+    static bool is_logined();
+    static vector<string> get_credential();
+    static bool set_user_credentials_to(string username, string password);
+    void change_to_another_user(string username, string password);
+
     card* get_next_card(); 
     vector<card> look_up_cards(string front, string back);
     void add_new_card(string front, string back);
