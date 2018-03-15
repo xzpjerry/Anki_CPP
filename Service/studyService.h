@@ -9,7 +9,7 @@
 #include <algorithm>
 using namespace std;
 #include "../Modal/card.h"
-enum performance {bad, hard, good, easy};
+enum performance {unf, bad, hard, good, easy};
 
 class studyService {
 public:
