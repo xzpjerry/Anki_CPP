@@ -1,6 +1,4 @@
-#include "./Controller/jobPool.h"
-#include "./Modal/card.h"
-#include "./UI/ui.hpp"
+#include "ui-demo.h"
 
 int main() {
 	if (!jobPool::is_logined()) {
@@ -20,6 +18,7 @@ int main() {
 			while(1) {
 				card* c = deck.get_next_card();
 				performance result = ui->present_card(c);
+
 				if (result == unf) {
 					break;
 				}

@@ -12,6 +12,9 @@ UI::UI() {
 }
 
 performance UI::present_card(card* c) {
+	clear();
+	draw_skeleton();
+
 	const char* card_front =  c->front().c_str();
 	int text_start_line = LINES / 3;
 	int text_start_col = COLS / 2 - c->front().length();
@@ -36,7 +39,7 @@ performance UI::present_card(card* c) {
 	const char* card_back = c->back().c_str();
 	mvprintw(text_start_line, COLS / 2 - c->back().length(), card_back);	
 	
-	mvprintw(LINES - 2, (COLS / 2) - 18, "1: Bad | 2: Hard | 3: Easy | 4: Good");
+	mvprintw(LINES - 2, (COLS / 2) - 18, "1: Bad | 2: Hard | 3: Good | 4: Easy");
 	
 	refresh();
 
